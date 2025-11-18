@@ -1,26 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('section');
+
+    // ===== Back to Top Button =====
     const backToTop = document.createElement('div');
     backToTop.id = 'backToTop';
     backToTop.innerHTML = '↑';
+    backToTop.style.display = 'none';
     document.body.appendChild(backToTop);
 
-    // ===== Smooth Scroll =====
-    navLinks.forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(link.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 70, // offset for sticky nav
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // ===== Back to Top =====
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -38,8 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.style.width = '0%';
     progressBar.style.transition = 'width 0.25s ease';
 
-    // ===== Intersection Observer for Sections =====
-    const observerOptions = { threshold: 0.1 };
+    // ===== Multi-page Navigation / Smooth Scroll for same-page links =====
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) { // Only smooth scroll for in-page anchors
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+    });
+
+    // ===== Intersection Observer for Section Visibility =====
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -47,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 obs.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
     sections.forEach(sec => observer.observe(sec));
 
@@ -59,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const counter = entry.target;
                 const target = +counter.getAttribute('data-target');
                 let count = 0;
-                const speed = 50; // ms
+                const speed = 50;
                 const increment = Math.ceil(target / 100);
                 const updateCounter = () => {
                     count += increment;
@@ -87,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (scrollTop > 300) backToTop.style.display = 'block';
         else backToTop.style.display = 'none';
 
-        // Highlight nav link
+        // Highlight nav link for same-page sections
         sections.forEach(sec => {
             const top = sec.offsetTop - 80;
             const bottom = top + sec.offsetHeight;
@@ -129,13 +133,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
     lazyImages.forEach(img => lazyObserver.observe(img));
-
-    // ===== Theme Toggle (Optional) =====
-    const toggleBtn = document.getElementById('themeToggle');
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-        });
-    }
-
 });
