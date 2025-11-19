@@ -2,113 +2,188 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hamza Basharat - Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hamza Basharat - Data Engineering Portfolio</title>
 <style>
-  /* ===== General Styles ===== */
-  * {margin:0;padding:0;box-sizing:border-box;}
-  body, html {width:100%;height:100%;font-family:Arial,sans-serif;background:#000;color:#fff;overflow:hidden;}
-  a {text-decoration:none;color:inherit;}
-  
-  /* ===== Header ===== */
-  header {position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 50px;background:rgba(0,0,0,0.8);z-index:100;}
-  header h1 {font-size:1.8rem;font-weight:bold;color:#00d4ff;}
-  nav a {margin-left:20px;padding:8px 16px;border-radius:5px;font-weight:bold;color:#fff;transition:0.3s;}
-  nav a:hover {background:#00d4ff;color:#000;}
-  nav a.github {padding:6px;}
-  nav a.github svg {width:24px;height:24px;}
-  
-  /* ===== Footer ===== */
-  footer {position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 50px;background:rgba(0,0,0,0.8);}
-  footer .social a {margin-left:15px;color:#fff;transition:0.3s;}
-  footer .social a:hover {color:#00d4ff;}
-  
-  /* ===== 3D Canvas ===== */
-  canvas {display:block;}
+* { margin:0; padding:0; box-sizing:border-box; }
+body, html { height:100%; font-family:'Segoe UI', sans-serif; overflow-x:hidden; background:#000; color:#fff; cursor:default; }
+
+/* Header */
+header { position: fixed; top:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center;
+         padding:20px 40px; background: rgba(0,0,0,0.7); z-index:1000; }
+header .logo { font-size:1.5em; font-weight:bold; color:#00bcd4; }
+header nav a { color:white; margin-left:20px; text-decoration:none; padding:6px 12px; border-radius:6px; transition:0.3s; }
+header nav a:hover { background:#0077b6; }
+
+/* Footer */
+footer { position: fixed; bottom:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center;
+         padding:10px 40px; background: rgba(0,0,0,0.7); color:white; font-size:0.9em; }
+footer a { margin-left:15px; color:white; text-decoration:none; transition:0.3s; }
+footer a:hover { color:#00bcd4; }
+
+/* Main content */
+main { position:relative; z-index:1; text-align:center; padding-top:120px; }
+h1 { font-size:3em; margin-bottom:10px; }
+p { font-size:1.2em; margin-bottom:30px; }
+
+.btn { background:#0077b6; color:white; padding:12px 20px; margin:5px; border:none; border-radius:8px; cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block; }
+.btn:hover { background:#00bcd4; }
+
+/* 3D canvas */
+#bgCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-  <h1>Hamza Basharat</h1>
+  <div class="logo">Hamza Basharat</div>
   <nav>
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#blog">Blog</a>
-    <a href="https://github.com/" target="_blank" class="github">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.55 2.36 1.1 2.93.84.09-.65.35-1.1.63-1.35-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.34-.012 2.42-.012 2.75 0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-    </a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
   </nav>
 </header>
 
-<canvas id="canvas"></canvas>
+<!-- 3D Background -->
+<canvas id="bgCanvas"></canvas>
 
+<!-- Main content -->
+<main>
+  <section id="about">
+    <h1>Hello, I'm Hamza Basharat</h1>
+    <p>I build <span style="color:#00bcd4;">data-driven</span> digital experiences that are minimal, functional, and memorable.</p>
+  </section>
+  <section id="work">
+    <h1>My Work</h1>
+    <p>Explore my data engineering projects, pipelines, and dashboards.</p>
+  </section>
+  <section id="blog">
+    <h1>Blog</h1>
+    <p>Insights and tutorials on data engineering, cloud, and analytics.</p>
+  </section>
+</main>
+
+<!-- Footer -->
 <footer>
-  <div>© 2025 Hamza Basharat</div>
-  <div class="social">
-    <a href="https://linkedin.com/" target="_blank">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
-    <a href="https://github.com/" target="_blank">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.55 2.36 1.1 2.93.84.09-.65.35-1.1.63-1.35-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.34-.012 2.42-.012 2.75 0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-    </a>
-    <a href="https://instagram.com/" target="_blank">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-    </a>
+  <div>Hamza Basharat / © 2025</div>
+  <div>
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    <a href="https://instagram.com/" target="_blank">Instagram</a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
+<!-- JS: Three.js Advanced Interactive Network -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
 <script>
-  const canvas = document.getElementById('canvas');
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({canvas:canvas,antialias:true});
+const canvas = document.getElementById('bgCanvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+camera.position.z = 35;
+
+// Mouse tracking
+let mouse = new THREE.Vector2(0,0);
+document.addEventListener('mousemove', (e)=>{
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
+
+// Lights
+const ambient = new THREE.AmbientLight(0xffffff,0.5);
+scene.add(ambient);
+const pointLight = new THREE.PointLight(0xffffff,1);
+pointLight.position.set(50,50,50);
+scene.add(pointLight);
+
+// Nodes and lines
+let nodes = [], lines = [];
+let nodeCount = 80;
+
+// Function to create a node
+function createNode(){
+  const geometry = new THREE.SphereGeometry(0.5,16,16);
+  const material = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(`hsl(${Math.random()*360},80%,60%)`),
+    emissive: new THREE.Color(`hsl(${Math.random()*360},80%,30%)`),
+    metalness:0.5, roughness:0.3
+  });
+  const node = new THREE.Mesh(geometry, material);
+  node.position.set((Math.random()-0.5)*60, (Math.random()-0.5)*40, (Math.random()-0.5)*60);
+  scene.add(node);
+  nodes.push(node);
+
+  // Connect with random existing nodes
+  nodes.forEach(other=>{
+    if(other!==node && Math.random()<0.08){
+      const geom = new THREE.BufferGeometry().setFromPoints([node.position, other.position]);
+      const mat = new THREE.LineBasicMaterial({color:0x00bcd4, transparent:true, opacity:0.2});
+      const line = new THREE.Line(geom, mat);
+      scene.add(line);
+      lines.push({line, p1:node, p2:other});
+    }
+  });
+}
+
+// Create initial nodes
+for(let i=0;i<nodeCount;i++) createNode();
+
+// Raycaster for hover
+const raycaster = new THREE.Raycaster();
+
+// Animate
+let bgHue = 180;
+function animate(){
+  requestAnimationFrame(animate);
+
+  // Rotate camera slightly
+  camera.position.x = 35 * Math.sin(Date.now()*0.0002);
+  camera.position.z = 35 * Math.cos(Date.now()*0.0002);
+  camera.lookAt(0,0,0);
+
+  // Animate background
+  bgHue += 0.05;
+  document.body.style.background = `hsl(${bgHue}, 30%, 5%)`;
+
+  // Move nodes slightly with mouse
+  nodes.forEach(n=>{
+    n.rotation.x += 0.004;
+    n.rotation.y += 0.008;
+    n.position.x += (mouse.x)*0.5*Math.random()*0.1;
+    n.position.y += (mouse.y)*0.5*Math.random()*0.1;
+    n.position.z += (Math.random()-0.5)*0.02;
+  });
+
+  // Update lines
+  lines.forEach(l=>{
+    l.line.geometry.setFromPoints([l.p1.position, l.p2.position]);
+    l.line.material.opacity = 0.1 + 0.1*Math.sin(Date.now()*0.002);
+  });
+
+  // Hover glow effect
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(nodes);
+  nodes.forEach(n=>n.material.emissiveIntensity = 0.5);
+  intersects.forEach(i=>{
+    i.object.material.emissiveIntensity = 2;
+  });
+
+  renderer.render(scene,camera);
+}
+animate();
+
+// Click to generate new nodes
+document.addEventListener('click', ()=>{ for(let i=0;i<5;i++) createNode(); });
+
+// Resize
+window.addEventListener('resize',()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x000000,1);
-
-  // Nodes
-  const nodeCount = 60;
-  const nodes = [];
-  const nodeMaterial = new THREE.MeshBasicMaterial({color:0x00d4ff});
-  const geometry = new THREE.SphereGeometry(0.1,8,8);
-  for(let i=0;i<nodeCount;i++){
-    let node = new THREE.Mesh(geometry,nodeMaterial);
-    node.position.set((Math.random()-0.5)*20,(Math.random()-0.5)*20,(Math.random()-0.5)*20);
-    scene.add(node);
-    nodes.push(node);
-  }
-
-  camera.position.z = 15;
-  const mouse = {x:0,y:0};
-  document.addEventListener('mousemove',e=>{
-    mouse.x = (e.clientX/window.innerWidth)*2-1;
-    mouse.y = -(e.clientY/window.innerHeight)*2+1;
-  });
-
-  function animate(){
-    requestAnimationFrame(animate);
-    // smooth camera movement
-    camera.position.x += (mouse.x*10 - camera.position.x)*0.05;
-    camera.position.y += (mouse.y*10 - camera.position.y)*0.05;
-    camera.lookAt(scene.position);
-
-    nodes.forEach(node=>{
-      node.position.x += Math.sin(Date.now()*0.001+node.position.y)*0.005;
-      node.position.y += Math.cos(Date.now()*0.001+node.position.x)*0.005;
-      node.position.z += Math.sin(Date.now()*0.001+node.position.z)*0.005;
-    });
-
-    renderer.render(scene,camera);
-  }
-  animate();
-
-  window.addEventListener('resize',()=>{
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+});
 </script>
-
 </body>
 </html>
