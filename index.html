@@ -19,7 +19,7 @@ nav a svg {width:24px; height:24px; vertical-align:middle;}
 /* Center Text */
 .center-text {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; pointer-events:none;}
 .center-text h2 {font-size:3rem; color:#00d4ff; margin-bottom:10px;}
-.center-text p {font-size:1.2rem; color:#fff; opacity:0.9; max-width:700px; text-align:center;}
+.center-text p {font-size:1.2rem; color:#fff; opacity:0.8; max-width:700px;}
 
 /* Footer */
 footer {position:fixed; bottom:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:10px 50px; background:rgba(0,0,0,0.8);}
@@ -63,7 +63,6 @@ canvas {display:block;}
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
 <script>
 const canvas = document.getElementById('canvas');
 const scene = new THREE.Scene();
@@ -73,15 +72,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setClearColor(0x000000,1);
 
-// Orbit controls for smooth interaction
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.05;
-controls.enablePan = false;
-controls.minDistance = 10;
-controls.maxDistance = 40;
-
-const nodeCount = 100;
+const nodeCount = 120;
 const nodes = [];
 const nodeMaterial = new THREE.MeshBasicMaterial({color:0x00d4ff});
 const geometry = new THREE.SphereGeometry(0.12,10,10);
@@ -94,38 +85,20 @@ for(let i=0;i<nodeCount;i++){
   nodes.push(node);
 }
 
-// Dynamic lines
-const lineMaterial = new THREE.LineBasicMaterial({color:0x00ffff,transparent:true,opacity:0.7});
-const lineGeom = new THREE.BufferGeometry();
-let positions = new Float32Array(nodeCount*nodeCount*3*2);
-lineGeom.setAttribute('position', new THREE.BufferAttribute(positions,3));
-const lineMesh = new THREE.LineSegments(lineGeom,lineMaterial);
-scene.add(lineMesh);
+const lines = new THREE.Group();
+scene.add(lines);
 
-// Trails
-const trailCount = 200;
+// Particle trail
+const trailCount = 150;
 const trails = [];
-const trailMat = new THREE.PointsMaterial({color:0x00ffff,size:0.05,transparent:true,opacity:0.7});
+const trailMat = new THREE.PointsMaterial({color:0x00ffff,size:0.05,transparent:true,opacity:0.8});
 for(let i=0;i<trailCount;i++){
-  trails.push(new THREE.Vector3(Math.random()*30-15,Math.random()*20-10,Math.random()*30-15));
+  let particle = new THREE.Vector3(Math.random()*30-15,Math.random()*20-10,Math.random()*30-15);
+  trails.push(particle);
 }
 const trailGeom = new THREE.BufferGeometry().setFromPoints(trails);
 const trailPoints = new THREE.Points(trailGeom, trailMat);
 scene.add(trailPoints);
-
-// 3D Model / Logo - TorusKnot
-const torusGeo = new THREE.TorusKnotGeometry(2,0.5,150,20);
-const torusMat = new THREE.MeshStandardMaterial({color:0xff0080, metalness:0.6, roughness:0.2, emissive:0xff0080, emissiveIntensity:0.5});
-const torus = new THREE.Mesh(torusGeo, torusMat);
-torus.position.y = -5; // slightly lower
-scene.add(torus);
-
-// Lights
-const ambientLight = new THREE.AmbientLight(0xffffff,0.5);
-scene.add(ambientLight);
-const pointLight = new THREE.PointLight(0xff0080,1);
-pointLight.position.set(10,10,10);
-scene.add(pointLight);
 
 camera.position.z = 20;
 camera.position.y = -2;
@@ -138,7 +111,8 @@ document.addEventListener('mousemove', e=>{
 
 document.addEventListener('click', ()=>{
   nodes.forEach(node=>{
-    node.userData.velocity.set((Math.random()-0.5)*3,(Math.random()-0.5)*3,(Math.random()-0.5)*3);
+    const force = new THREE.Vector3((Math.random()-0.5)*3,(Math.random()-0.5)*3,(Math.random()-0.5)*3);
+    node.userData.velocity.copy(force);
   });
 });
 
@@ -148,46 +122,38 @@ function animate(){
   camera.position.x += (mouse.x*10 - camera.position.x)*0.05;
   camera.position.y += (mouse.y*10 - camera.position.y)*0.05 -2;
   camera.lookAt(scene.position);
-  controls.update();
+  scene.rotation.y += 0.001;
 
-  // Node movement
+  lines.clear();
+
+  // Move nodes
   nodes.forEach(node=>{
     node.position.add(node.userData.velocity);
-    node.userData.velocity.multiplyScalar(0.92);
+    node.userData.velocity.multiplyScalar(0.92); // smooth decay
+
     if(node.userData.velocity.length()<0.01) node.userData.velocity.set(0,0,0);
   });
 
-  // Update lines
-  let idx=0;
+  // Connect nodes
   for(let i=0;i<nodeCount;i++){
     for(let j=i+1;j<nodeCount;j++){
       const dist = nodes[i].position.distanceTo(nodes[j].position);
       if(dist<3){
         const opacity = 1 - dist/3;
-        const color = new THREE.Color().setHSL(0.5,1,Math.min(1,opacity+0.3));
-        lineMaterial.color = color;
-        positions[idx++] = nodes[i].position.x;
-        positions[idx++] = nodes[i].position.y;
-        positions[idx++] = nodes[i].position.z;
-        positions[idx++] = nodes[j].position.x;
-        positions[idx++] = nodes[j].position.y;
-        positions[idx++] = nodes[j].position.z;
+        const mat = new THREE.LineBasicMaterial({color:0x00ffff,opacity:opacity,transparent:true});
+        const geom = new THREE.BufferGeometry().setFromPoints([nodes[i].position,nodes[j].position]);
+        lines.add(new THREE.Line(geom,mat));
       }
     }
   }
-  lineGeom.attributes.position.needsUpdate = true;
 
-  // Trails
+  // Update trail
   trails.forEach(p=>{
     p.x += (Math.random()-0.5)*0.1;
     p.y += (Math.random()-0.5)*0.1;
     p.z += (Math.random()-0.5)*0.1;
   });
   trailGeom.setFromPoints(trails);
-
-  // 3D Logo rotation
-  torus.rotation.x += 0.002;
-  torus.rotation.y += 0.003;
 
   renderer.render(scene,camera);
 }
@@ -199,5 +165,6 @@ window.addEventListener('resize', ()=>{
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 </script>
+
 </body>
 </html>
