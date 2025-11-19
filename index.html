@@ -2,124 +2,188 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Syed Arfan Hussain - Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hamza Basharat - Data Engineering Portfolio</title>
 <style>
-/* ===== CSS START ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', sans-serif; background:#000; color:#fff; scroll-behavior: smooth; }
-a { text-decoration:none; color:inherit; }
-header { position:fixed; top:0; width:100%; background:rgba(0,0,0,0.8); backdrop-filter: blur(8px); padding:15px 30px; z-index:1000; }
-header nav { display:flex; justify-content:space-between; align-items:center; }
-header .logo { font-size:1.8rem; font-weight:bold; color:#00aaff; }
-header .nav-links a { margin-left:15px; padding:5px 10px; transition:0.3s; }
-header .nav-links a:hover { color:#00ffaa; }
-.hero { height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; padding:0 20px; }
-.hero h1 { font-size:clamp(2rem,8vw,5rem); color:#00aaff; margin-bottom:10px; }
-.hero .rotating-words { font-size:1.1rem; letter-spacing:2px; margin-bottom:15px; color:#aaa; }
-.hero p { font-size:1.2rem; color:#ccc; }
-.highlight { color:#00ffaa; }
-section { max-width:900px; margin:100px auto; padding:40px; background: rgba(255,255,255,0.05); border-radius:12px; opacity:0; transform:translateY(30px); transition:all 0.6s ease; }
-section.visible { opacity:1; transform:translateY(0); }
-section h2 { color:#00aaff; margin-bottom:20px; font-size:2rem; }
-ul { list-style:none; }
-li { background: rgba(0,170,255,0.2); margin:10px 0; padding:12px 18px; border-radius:8px; }
-footer { text-align:center; padding:20px 10px; background: rgba(0,0,0,0.8); margin-top:50px; color:#aaa; }
-#backToTop { position:fixed; bottom:25px; right:25px; background:#00aaff; color:#000; padding:12px 15px; border-radius:50%; font-size:18px; cursor:pointer; display:none; transition:0.3s; }
-#backToTop:hover { background:#00ffaa; transform:scale(1.1); }
+body, html { height:100%; font-family:'Segoe UI', sans-serif; overflow-x:hidden; background:#000; color:#fff; cursor:default; }
+
+/* Header */
+header { position: fixed; top:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center;
+         padding:20px 40px; background: rgba(0,0,0,0.7); z-index:1000; }
+header .logo { font-size:1.5em; font-weight:bold; color:#00bcd4; }
+header nav a { color:white; margin-left:20px; text-decoration:none; padding:6px 12px; border-radius:6px; transition:0.3s; }
+header nav a:hover { background:#0077b6; }
+
+/* Footer */
+footer { position: fixed; bottom:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center;
+         padding:10px 40px; background: rgba(0,0,0,0.7); color:white; font-size:0.9em; }
+footer a { margin-left:15px; color:white; text-decoration:none; transition:0.3s; }
+footer a:hover { color:#00bcd4; }
+
+/* Main content */
+main { position:relative; z-index:1; text-align:center; padding-top:120px; }
+h1 { font-size:3em; margin-bottom:10px; }
+p { font-size:1.2em; margin-bottom:30px; }
+
+.btn { background:#0077b6; color:white; padding:12px 20px; margin:5px; border:none; border-radius:8px; cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block; }
+.btn:hover { background:#00bcd4; }
+
+/* 3D canvas */
+#bgCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-    <nav>
-        <a href="#home" class="logo">SYED ARFAN</a>
-        <div class="nav-links">
-            <a href="#about">ABOUT</a>
-            <a href="#projects">WORK</a>
-            <a href="#blog">BLOG</a>
-            <a href="https://github.com/simplyarfan" target="_blank">GITHUB</a>
-            <a href="https://linkedin.com/in/syedarfan" target="_blank">LINKEDIN</a>
-            <a href="https://instagram.com/simplyarfan" target="_blank">INSTAGRAM</a>
-            <a href="https://www.youtube.com/@simplyarfan" target="_blank">YOUTUBE</a>
-        </div>
-    </nav>
+  <div class="logo">Hamza Basharat</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#blog">Blog</a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
+  </nav>
 </header>
 
+<!-- 3D Background -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- Main content -->
 <main>
-<section id="home" class="hero">
-    <div class="hero-content">
-        <h1>SYED ARFAN</h1>
-        <p class="rotating-words">DEVELOPER × DESIGNER × BUILDER × CREATOR</p>
-        <p>I build <span class="highlight">digital experiences</span> that are <span class="highlight">minimal</span>, <span class="highlight">functional</span>, and <span class="highlight">memorable</span>.</p>
-    </div>
-</section>
-
-<section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I’m Syed Arfan Hussain. I design and develop digital experiences with focus on simplicity, functionality, and creativity.</p>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-    <ul>
-        <li>Project 1 - Website Design</li>
-        <li>Project 2 - App Development</li>
-        <li>Project 3 - YouTube Channel Content</li>
-    </ul>
-</section>
-
-<section id="blog">
-    <h2>Blog</h2>
-    <p>Coming soon!</p>
-</section>
+  <section id="about">
+    <h1>Hello, I'm Hamza Basharat</h1>
+    <p>I build <span style="color:#00bcd4;">data-driven</span> digital experiences that are minimal, functional, and memorable.</p>
+  </section>
+  <section id="work">
+    <h1>My Work</h1>
+    <p>Explore my data engineering projects, pipelines, and dashboards.</p>
+  </section>
+  <section id="blog">
+    <h1>Blog</h1>
+    <p>Insights and tutorials on data engineering, cloud, and analytics.</p>
+  </section>
 </main>
 
+<!-- Footer -->
 <footer>
-    <p>© 2025 Syed Arfan Hussain</p>
+  <div>Hamza Basharat / © 2025</div>
+  <div>
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    <a href="https://instagram.com/" target="_blank">Instagram</a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
+  </div>
 </footer>
 
-<button id="backToTop">↑</button>
-
+<!-- JS: Three.js Advanced Interactive Network -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
 <script>
-// ===== JS START =====
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
-    const backToTop = document.getElementById("backToTop");
+const canvas = document.getElementById('bgCanvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+camera.position.z = 35;
 
-    // Section Reveal
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+// Mouse tracking
+let mouse = new THREE.Vector2(0,0);
+document.addEventListener('mousemove', (e)=>{
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
 
-    sections.forEach(section => observer.observe(section));
+// Lights
+const ambient = new THREE.AmbientLight(0xffffff,0.5);
+scene.add(ambient);
+const pointLight = new THREE.PointLight(0xffffff,1);
+pointLight.position.set(50,50,50);
+scene.add(pointLight);
 
-    // Back to Top Button
-    window.addEventListener("scroll", () => {
-        backToTop.style.display = window.scrollY > 300 ? "block" : "none";
-    });
+// Nodes and lines
+let nodes = [], lines = [];
+let nodeCount = 80;
 
-    backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+// Function to create a node
+function createNode(){
+  const geometry = new THREE.SphereGeometry(0.5,16,16);
+  const material = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(`hsl(${Math.random()*360},80%,60%)`),
+    emissive: new THREE.Color(`hsl(${Math.random()*360},80%,30%)`),
+    metalness:0.5, roughness:0.3
+  });
+  const node = new THREE.Mesh(geometry, material);
+  node.position.set((Math.random()-0.5)*60, (Math.random()-0.5)*40, (Math.random()-0.5)*60);
+  scene.add(node);
+  nodes.push(node);
 
-    // Rotating Words
-    const rotating = document.querySelector(".rotating-words");
-    if (rotating) {
-        let words = rotating.textContent.split(" × ");
-        let index = 0;
-        setInterval(() => {
-            index = (index + 1) % words.length;
-            rotating.textContent = words[index];
-        }, 2000);
+  // Connect with random existing nodes
+  nodes.forEach(other=>{
+    if(other!==node && Math.random()<0.08){
+      const geom = new THREE.BufferGeometry().setFromPoints([node.position, other.position]);
+      const mat = new THREE.LineBasicMaterial({color:0x00bcd4, transparent:true, opacity:0.2});
+      const line = new THREE.Line(geom, mat);
+      scene.add(line);
+      lines.push({line, p1:node, p2:other});
     }
+  });
+}
+
+// Create initial nodes
+for(let i=0;i<nodeCount;i++) createNode();
+
+// Raycaster for hover
+const raycaster = new THREE.Raycaster();
+
+// Animate
+let bgHue = 180;
+function animate(){
+  requestAnimationFrame(animate);
+
+  // Rotate camera slightly
+  camera.position.x = 35 * Math.sin(Date.now()*0.0002);
+  camera.position.z = 35 * Math.cos(Date.now()*0.0002);
+  camera.lookAt(0,0,0);
+
+  // Animate background
+  bgHue += 0.05;
+  document.body.style.background = `hsl(${bgHue}, 30%, 5%)`;
+
+  // Move nodes slightly with mouse
+  nodes.forEach(n=>{
+    n.rotation.x += 0.004;
+    n.rotation.y += 0.008;
+    n.position.x += (mouse.x)*0.5*Math.random()*0.1;
+    n.position.y += (mouse.y)*0.5*Math.random()*0.1;
+    n.position.z += (Math.random()-0.5)*0.02;
+  });
+
+  // Update lines
+  lines.forEach(l=>{
+    l.line.geometry.setFromPoints([l.p1.position, l.p2.position]);
+    l.line.material.opacity = 0.1 + 0.1*Math.sin(Date.now()*0.002);
+  });
+
+  // Hover glow effect
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(nodes);
+  nodes.forEach(n=>n.material.emissiveIntensity = 0.5);
+  intersects.forEach(i=>{
+    i.object.material.emissiveIntensity = 2;
+  });
+
+  renderer.render(scene,camera);
+}
+animate();
+
+// Click to generate new nodes
+document.addEventListener('click', ()=>{ for(let i=0;i<5;i++) createNode(); });
+
+// Resize
+window.addEventListener('resize',()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 });
 </script>
-
 </body>
 </html>
