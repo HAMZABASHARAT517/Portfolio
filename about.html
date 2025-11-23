@@ -1,26 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>About — Hamza Basharat</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Hamza Basharat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body { font-family:'Segoe UI', sans-serif; background:#000; color:#fff; margin:0; }
+header, footer { position:fixed; width:100%; background:rgba(0,0,0,0.7); padding:20px 40px; z-index:1000; display:flex; justify-content:space-between; align-items:center; }
+header .logo, footer div { color:white; font-weight:bold; }
+.top-nav a { color:white; margin-left:18px; text-decoration:none; padding:6px 12px; border-radius:6px; transition:0.25s; }
+.top-nav a:hover { background:#0077b6; }
+main { padding:140px 40px 80px 40px; max-width:1200px; margin:auto; }
+h1 { text-align:center; font-size:2.5em; font-weight:bold; margin-bottom:50px; color:#00bcd4; }
+.about-container { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:30px; }
+.about-text { flex:1; min-width:300px; }
+.about-text h2 { font-weight:bold; font-size:1.8em; margin-bottom:15px; }
+.about-text p { line-height:1.6; font-size:1.1em; margin-bottom:10px; }
+.about-photo { flex:1; min-width:250px; text-align:center; }
+.about-photo img { max-width:100%; border-radius:15px; border:2px solid #00bcd4; }
+@media(max-width:768px){
+  .about-container { flex-direction:column; text-align:center; }
+  .about-text, .about-photo { text-align:center; }
+}
+</style>
 </head>
 <body>
+
 <header>
   <div class="logo">Hamza Basharat</div>
   <nav class="top-nav">
     <a href="index.html">Home</a>
     <a href="work.html">Work</a>
     <a href="contact.html">Contact</a>
+    <a href="https://github.com/HAMZABASHARAT517" target="_blank">GitHub</a>
   </nav>
 </header>
-<main class="container">
-  <h1>About</h1>
-  <p>Hi — I'm Hamza, a Data Engineer and Data Analyst. I build fast, reliable data pipelines and enjoy turning messy data into insights.</p>
+
+<main>
+  <h1>Who I Am?</h1>
+  <div class="about-container">
+    <div class="about-text">
+      <h2>Hamza Basharat</h2>
+      <p><strong>Role:</strong> Data Engineer / Data Analyst</p>
+      <p><strong>Experience:</strong> 1 Year in Data Engineering</p>
+      <p><strong>Skills:</strong> SQL, Python, AWS, GCP, Data Pipelines, ETL, Apache Airflow</p>
+      <p><strong>Email:</strong> ch7777467@gmail.com</p>
+    </div>
+    <div class="about-photo">
+      <img src="images/profile.jpg" alt="Hamza Basharat Photo">
+    </div>
+  </div>
 </main>
+
 <footer>
   <div>Hamza Basharat / © 2025</div>
+  <div>
+    <a href="https://www.linkedin.com/in/hamza-302yu" target="_blank">LinkedIn</a>
+    <a href="https://github.com/HAMZABASHARAT517" target="_blank">GitHub</a>
+  </div>
 </footer>
+
 </body>
 </html>
