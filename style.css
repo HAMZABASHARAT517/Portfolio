@@ -1,3 +1,28 @@
+/* Main heading */
+.main-heading {
+  font-size: 4em;         /* Size bada kiya */
+  font-weight: 800;       /* Extra bold */
+  color: #00bcd4;         /* Aesthetic color */
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Rotating text box */
+.rotating-box {
+  font-size: 1.4em;       /* Size kam kiya */
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* Description line */
+.desc-line {
+  font-size: 1em;         /* Size kam kiya */
+  opacity: 0.9;
+  margin-top: 10px;
+}
 :root{
   --max-width:1000px;
   --accent:#0b74de;
