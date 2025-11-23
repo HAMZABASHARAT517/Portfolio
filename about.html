@@ -4,24 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About - Hamza Basharat</title>
-<link rel="stylesheet" href="css/style.css">
 <style>
-body { font-family:'Segoe UI', sans-serif; background:#000; color:#fff; margin:0; }
-header, footer { position:fixed; width:100%; background:rgba(0,0,0,0.7); padding:20px 40px; z-index:1000; display:flex; justify-content:space-between; align-items:center; }
-header .logo, footer div { color:white; font-weight:bold; }
-.top-nav a { color:white; margin-left:18px; text-decoration:none; padding:6px 12px; border-radius:6px; transition:0.25s; }
+/* Reset & body */
+* { margin:0; padding:0; box-sizing:border-box; }
+body, html { height:100%; font-family:'Segoe UI', sans-serif; background:#000; color:#fff; overflow-x:hidden; }
+
+/* Header same as index.html */
+header {
+  position: fixed;
+  top:0; left:0; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 40px; background:rgba(0,0,0,0.7); z-index:1000;
+}
+header .logo { font-size:1.5em; font-weight:bold; color:white; }
+.top-nav { display:flex; align-items:center; flex-wrap:wrap; }
+.top-nav a {
+  color:white; margin-left:18px; text-decoration:none;
+  padding:6px 12px; border-radius:6px; transition:0.25s; font-size:0.95em;
+}
 .top-nav a:hover { background:#0077b6; }
-main { padding:140px 40px 80px 40px; max-width:1200px; margin:auto; }
+
+/* Footer same as index.html */
+footer {
+  position: fixed; bottom:0; left:0; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 40px; background:rgba(0,0,0,0.7); color:white; font-size:0.9em;
+}
+footer a { margin-left:15px; color:white; text-decoration:none; }
+footer a:hover { color:#00bcd4; }
+
+/* Main */
+main {
+  padding:140px 40px 80px 40px;
+  max-width:1200px; margin:auto;
+}
+
+/* Heading */
 h1 { text-align:center; font-size:2.5em; font-weight:bold; margin-bottom:50px; color:#00bcd4; }
+
+/* About section */
 .about-container { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:30px; }
 .about-text { flex:1; min-width:300px; }
 .about-text h2 { font-weight:bold; font-size:1.8em; margin-bottom:15px; }
 .about-text p { line-height:1.6; font-size:1.1em; margin-bottom:10px; }
 .about-photo { flex:1; min-width:250px; text-align:center; }
 .about-photo img { max-width:100%; border-radius:15px; border:2px solid #00bcd4; }
+
+/* Responsive */
 @media(max-width:768px){
   .about-container { flex-direction:column; text-align:center; }
   .about-text, .about-photo { text-align:center; }
+  header { padding:15px 20px; }
+  .top-nav a { margin-left:10px; padding:5px 10px; font-size:0.9em; }
+  main { padding:120px 20px 60px 20px; }
+  footer { padding:10px 20px; }
 }
 </style>
 </head>
