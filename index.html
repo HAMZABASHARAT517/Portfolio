@@ -1,14 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hamza Basharat - Portfolio</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- Header -->
 <header>
   <div class="logo">Hamza Basharat</div>
   <nav class="top-nav">
@@ -18,50 +17,26 @@
     <a href="https://github.com/HAMZABASHARAT517" target="_blank" class="github-icon">GitHub</a>
   </nav>
 </header>
-
-<!-- 3D Background Canvas -->
 <canvas id="bgCanvas"></canvas>
-
-<!-- Main Content -->
 <main>
-  <div class="username-badge">@hamzzza</div>
-  <h1>Hello, I'm Hamza Basharat</h1>
-  <div class="rotating-box">
-    <span id="rotateWord" class="rotating-text">Love</span> × Data Engineer × Data Analyst
-  </div>
-  <p class="desc-line">
-    Engineering fast, scalable data pipelines that power real business decisions.
-  </p>
+  <section id="about">
+    <div class="username-badge">@hamzzza</div>
+    <h1>Hello, I'm Hamza Basharat</h1>
+    <div class="rotating-box">
+      <span id="rotateWord" class="rotating-text">Love</span> × Data Engineer × Data Analyst
+    </div>
+    <p class="desc-line">Engineering fast, scalable data pipelines that power real business decisions.</p>
+  </section>
 </main>
-
-<!-- Footer -->
 <footer>
   <div>Hamza Basharat / © 2025</div>
-  <div class="social">
+  <div>
     <a href="https://www.linkedin.com/in/hamza-302yu" target="_blank">LinkedIn</a>
     <a href="https://github.com/HAMZABASHARAT517" target="_blank">GitHub</a>
   </div>
 </footer>
-
-<!-- Rotating Words Script -->
-<script>
-const words = ["Love", "Passion", "Innovation", "Growth", "Vision"];
-let index = 0;
-const rotate = document.getElementById("rotateWord");
-setInterval(() => {
-  index = (index + 1) % words.length;
-  rotate.innerText = words[index];
-  rotate.classList.remove("rotating-text");
-  void rotate.offsetWidth;
-  rotate.classList.add("rotating-text");
-}, 1800);
-</script>
-
-<!-- Three.js -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
-
-<!-- 3D Script -->
-<script src="script/script.js"></script>
-
+<script src="script.js"></script>
+<script src="rotate.js"></script>
 </body>
 </html>
