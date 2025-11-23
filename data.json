@@ -1,6 +1,102 @@
-{
-"site":"Hamza Portfolio",
-"author":"Hamza Basharat",
-"pages":["index.html","about.html","work.html","contact.html"],
-"year":2025
+// Rotating Text
+const words = ["Love", "Passion", "Innovation", "Growth", "Vision"];
+let index = 0;
+const rotate = document.getElementById("rotateWord");
+
+setInterval(() => {
+  index = (index + 1) % words.length;
+  rotate.innerText = words[index];
+  rotate.classList.remove("rotating-text");
+  void rotate.offsetWidth; // restart animation
+  rotate.classList.add("rotating-text");
+}, 1800);
+
+// 3D Background
+const canvas = document.getElementById('bgCanvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+camera.position.z = 35;
+
+let mouse = new THREE.Vector2(0,0);
+document.addEventListener('mousemove', e=>{
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
+
+const ambient = new THREE.AmbientLight(0xffffff,0.5);
+scene.add(ambient);
+const pointLight = new THREE.PointLight(0xffffff,1);
+pointLight.position.set(50,50,50);
+scene.add(pointLight);
+
+let nodes = [], lines = [];
+let nodeCount = 60;
+
+function createNode(){
+  const geometry = new THREE.SphereGeometry(0.5,16,16);
+  const material = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(`hsl(${Math.random()*360},80%,60%)`),
+    emissive: new THREE.Color(`hsl(${Math.random()*360},80%,30%)`),
+    metalness:0.5, roughness:0.3
+  });
+  const node = new THREE.Mesh(geometry, material);
+  node.position.set((Math.random()-0.5)*60, (Math.random()-0.5)*40, (Math.random()-0.5)*60);
+  scene.add(node);
+  nodes.push(node);
+
+  nodes.forEach(other=>{
+    if(other!==node && Math.random()<0.08){
+      const geom = new THREE.BufferGeometry().setFromPoints([node.position, other.position]);
+      const mat = new THREE.LineBasicMaterial({color:0x00bcd4, transparent:true, opacity:0.2});
+      const line = new THREE.Line(geom, mat);
+      scene.add(line);
+      lines.push({line, p1:node, p2:other});
+    }
+  });
 }
+
+for(let i=0;i<nodeCount;i++) createNode();
+
+const raycaster = new THREE.Raycaster();
+let bgHue = 180;
+
+function animate(){
+  requestAnimationFrame(animate);
+  camera.position.x = 35 * Math.sin(Date.now()*0.0002);
+  camera.position.z = 35 * Math.cos(Date.now()*0.0002);
+  camera.lookAt(0,0,0);
+
+  bgHue += 0.05;
+  document.body.style.background = `hsl(${bgHue}, 30%, 5%)`;
+
+  nodes.forEach(n=>{
+    n.rotation.x += 0.004;
+    n.rotation.y += 0.008;
+    n.position.x += (mouse.x)*0.5*Math.random()*0.1;
+    n.position.y += (mouse.y)*0.5*Math.random()*0.1;
+    n.position.z += (Math.random()-0.5)*0.02;
+  });
+
+  lines.forEach(l=>{
+    l.line.geometry.setFromPoints([l.p1.position, l.p2.position]);
+    l.line.material.opacity = 0.1 + 0.1*Math.sin(Date.now()*0.002);
+  });
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(nodes);
+  nodes.forEach(n=>n.material.emissiveIntensity = 0.5);
+  intersects.forEach(i=>{ i.object.material.emissiveIntensity = 2; });
+
+  renderer.render(scene,camera);
+}
+animate();
+
+document.addEventListener('click', ()=>{ for(let i=0;i<5;i++) createNode(); });
+
+window.addEventListener('resize',()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
