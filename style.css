@@ -1,15 +1,15 @@
 :root{
   --max-width:1000px;
-  --accent:#16a34a;   /* hover green */
-  --muted:#9ca3af;    /* muted grey */
+  --accent:#2ea043;   /* hover green */
+  --muted:#8b949e;    /* aesthetic muted */
 }
 
 /* Reset & Body */
 *{box-sizing:border-box; margin:0; padding:0;}
 body{
-  font-family:Segoe UI, system-ui, Arial, sans-serif;
-  color:#e5e7eb;
-  background:#0b1220;        /* dark data background */
+  font-family:Inter, Segoe UI, system-ui, Arial, sans-serif;
+  color:#e6edf3;
+  background:#0d1117;
   overflow-x:hidden;
 }
 
@@ -30,38 +30,40 @@ header{
   justify-content:space-between;
   align-items:center;
   padding:20px 40px;
-  background:rgba(11,18,32,0.9);
+  background:rgba(13,17,23,0.85);
+  backdrop-filter:blur(10px);
   z-index:1000;
 }
 
 .logo{
   font-size:1.25rem;
   font-weight:700;
-  color:#22c55e;   /* primary green */
+  color:#3fb950;
+  letter-spacing:0.4px;
 }
 
 /* Top navigation */
 .top-nav a{
-  margin-left:14px;
+  margin-left:16px;
   text-decoration:none;
   color:var(--muted);
   font-weight:500;
-  transition:0.25s;
+  transition:0.25s ease;
 }
 
 .top-nav a:hover{
-  color:var(--accent);
+  color:#3fb950;
 }
 
 /* Username badge */
 .username-badge{
   display:inline-block;
-  padding:6px 20px;
-  border:1px solid #22c55e;
-  border-radius:28px;
-  font-size:1.1em;
-  font-weight:300;
-  color:#22c55e;
+  padding:6px 22px;
+  border:1px solid rgba(63,185,80,0.35);
+  border-radius:999px;
+  font-size:1.05em;
+  font-weight:400;
+  color:#3fb950;
   margin-bottom:25px;
 }
 
@@ -69,12 +71,11 @@ header{
 .rotating-box{
   font-size:1.8em;
   font-weight:600;
-  margin-top:25px;
-  margin-bottom:25px;
+  margin:25px 0;
 }
 
 .rotating-text{
-  color:#22c55e;
+  color:#3fb950;
   display:inline-block;
   min-width:100px;
   animation:fadeIn 0.6s ease-in-out;
@@ -87,9 +88,9 @@ header{
 
 /* Description line */
 .desc-line{
-  font-size:1.2em;
-  margin-top:10px;
-  opacity:0.9;
+  font-size:1.15em;
+  margin-top:12px;
+  opacity:0.85;
 }
 
 /* Main */
@@ -98,17 +99,6 @@ main{
   z-index:2;
   text-align:center;
   padding-top:140px;
-}
-
-/* 3D Canvas */
-#bgCanvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-  display:block;
 }
 
 /* Footer */
@@ -121,15 +111,16 @@ footer{
   justify-content:space-between;
   align-items:center;
   padding:10px 40px;
-  background:rgba(11,18,32,0.9);
-  color:#e5e7eb;
+  background:rgba(13,17,23,0.85);
+  backdrop-filter:blur(10px);
+  color:#8b949e;
   font-size:0.9rem;
   z-index:1000;
 }
 
 footer a{
   margin-left:15px;
-  color:#22c55e;
+  color:#3fb950;
   text-decoration:none;
   font-weight:500;
 }
