@@ -138,3 +138,27 @@ footer a.github:hover,
 footer a.linkedin:hover{
   color:#ffffff;
 }
+/* ===== Logo glowing pulse effect ===== */
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f4f4f5;        /* Base off-white */
+  letter-spacing: 0.4px;
+  animation: pulseGlow 2s infinite alternate; /* 2s cycle, infinite loop */
+}
+
+@keyframes pulseGlow {
+  0% {
+    color: #d9d9d9;       /* dimmer */
+    text-shadow: 0 0 2px rgba(63,185,80,0.2);
+  }
+  50% {
+    color: #f4f4f5;       /* normal / bright */
+    text-shadow: 0 0 6px rgba(63,185,80,0.4); /* soft glow */
+  }
+  100% {
+    color: #e6e6e6;       /* slightly dim again */
+    text-shadow: 0 0 2px rgba(63,185,80,0.2);
+  }
+}
+
