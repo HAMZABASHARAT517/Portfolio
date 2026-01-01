@@ -128,3 +128,13 @@ footer a{
 footer a:hover{
   color:var(--accent);
 }
+/* ---- Social links: GitHub + LinkedIn (off-white) ---- */
+footer a.github,
+footer a.linkedin{
+  color:#f5f5f5;
+}
+
+footer a.github:hover,
+footer a.linkedin:hover{
+  color:#ffffff;
+}
