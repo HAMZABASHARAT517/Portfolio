@@ -6,18 +6,26 @@
 <title>Contact — Hamza Basharat</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* ===== Contact Page Buttons / Links Styling ===== */
+/* ===== Contact Page Vertical Buttons / Links Styling ===== */
+.contact-links {
+  display: flex;
+  flex-direction: column; /* vertical layout */
+  gap: 15px; /* space between rows */
+  margin-top: 20px;
+}
+
 .contact-links a {
-  display:inline-block;
-  margin:8px 10px 8px 0;
-  padding:10px 18px;
-  border:2px solid rgba(63,185,80,0.5);
-  border-radius:999px;
-  color:#f4f4f5;
+  display: inline-flex; /* allows button + text side by side */
+  align-items: center;
+  gap: 12px; /* space between emoji and text */
+  padding: 10px 20px;
+  border: 2px solid rgba(63,185,80,0.5);
+  border-radius: 999px;
+  color: #f4f4f5;
   background: rgba(63,185,80,0.05);
-  text-decoration:none;
-  font-weight:500;
-  font-size:1.1rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -26,6 +34,12 @@
   background: rgba(63,185,80,0.2);
   box-shadow: 0 4px 15px rgba(63,185,80,0.3);
   transform: translateY(-2px);
+}
+
+.contact-links span.details {
+  font-weight: 400;
+  color: #e6edf3;
+  font-size: 0.95rem;
 }
 </style>
 </head>
@@ -45,29 +59,31 @@
 
   <div class="contact-links">
     <!-- Email -->
-    <a href="mailto:ch7777467@gmail.com">📧</a>
+    <a href="mailto:ch7777467@gmail.com">📧 <span class="details">ch7777467@gmail.com</span></a>
 
-    <!-- Phone / WhatsApp -->
-    <a href="tel:+923234633135">📱</a>
-    <a href="https://wa.me/923234633135" target="_blank">💬</a>
+    <!-- Phone -->
+    <a href="tel:+923234633135">📱 <span class="details">+92 323 4633135</span></a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/923234633135" target="_blank">💬 <span class="details">WhatsApp Web</span></a>
 
     <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/hamza-302yu" target="_blank">💼</a>
+    <a href="https://www.linkedin.com/in/hamza-302yu" target="_blank">💼 <span class="details">hamza-302yu</span></a>
 
     <!-- GitHub -->
-    <a href="https://github.com/HAMZABASHARAT517" target="_blank">🖥️</a>
+    <a href="https://github.com/HAMZABASHARAT517" target="_blank">🖥️ <span class="details">HAMZABASHARAT517</span></a>
 
     <!-- Portfolio -->
-    <a href="https://hamzabasharat.dev" target="_blank">🌐</a>
+    <a href="https://hamzabasharat.dev" target="_blank">🌐 <span class="details">Portfolio</span></a>
 
     <!-- Kaggle -->
-    <a href="https://www.kaggle.com/hamza" target="_blank">📊</a>
+    <a href="https://www.kaggle.com/hamza" target="_blank">📊 <span class="details">Kaggle</span></a>
 
-    <!-- Medium / Blog -->
-    <a href="https://medium.com/@hamza" target="_blank">✍️</a>
+    <!-- Blog / Medium -->
+    <a href="https://medium.com/@hamza" target="_blank">✍️ <span class="details">Blog</span></a>
 
     <!-- Twitter / X -->
-    <a href="https://twitter.com/hamza" target="_blank">🐦</a>
+    <a href="https://twitter.com/hamza" target="_blank">🐦 <span class="details">@hamza</span></a>
   </div>
 </main>
 
