@@ -6,23 +6,28 @@
 <title>Hamza Basharat - Portfolio</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* Additional @Resume button styling */
-.username-badge {
+/* @Resume and top-nav button styling */
+.username-badge, .top-nav a {
   display:inline-block;
-  padding:8px 25px;
+  padding:8px 20px;
   border:2px solid rgba(63,185,80,0.5);
   border-radius:999px;
-  font-size:1.05em;
+  font-size:1em;
   font-weight:500;
   color:#f4f4f5;          /* Off-white text */
-  margin-bottom:25px;
+  margin-left:10px;
   text-decoration:none;
   transition: all 0.3s ease;
   cursor: pointer;        /* Cursor pointer */
   background: rgba(63,185,80,0.05);  /* subtle light green bg */
 }
 
-.username-badge:hover {
+.username-badge {
+  margin-left:0;          /* no left margin for resume button */
+  margin-bottom:25px;
+}
+
+.username-badge:hover, .top-nav a:hover {
   color:#f4f4f5;                /* text stays off-white */
   background: rgba(63,185,80,0.2); /* subtle green glow */
   box-shadow: 0 4px 15px rgba(63,185,80,0.3); /* soft glowing shadow */
