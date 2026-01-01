@@ -5,6 +5,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Contact — Hamza Basharat</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* ===== Contact Page Buttons / Links Styling ===== */
+.contact-links a {
+  display:inline-block;
+  margin:8px 10px 8px 0;
+  padding:8px 20px;
+  border:2px solid rgba(63,185,80,0.5);
+  border-radius:999px;
+  color:#f4f4f5;
+  background: rgba(63,185,80,0.05);
+  text-decoration:none;
+  font-weight:500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-links a:hover {
+  background: rgba(63,185,80,0.2);
+  box-shadow: 0 4px 15px rgba(63,185,80,0.3);
+  transform: translateY(-2px);
+}
+</style>
 </head>
 <body>
 <header>
@@ -15,12 +37,42 @@
     <a href="work.html">Work</a>
   </nav>
 </header>
+
 <main class="container">
   <h1>Contact</h1>
-  <p>Email: <a href="mailto:hamza@example.com">hamza@example.com</a></p>
+  <p>Feel free to reach out through any of the following professional channels:</p>
+
+  <div class="contact-links">
+    <!-- Email -->
+    <a href="mailto:hamza@example.com">Email</a>
+
+    <!-- Phone / WhatsApp -->
+    <a href="tel:+923234633135">Call / WhatsApp</a>
+    <a href="https://wa.me/923234633135" target="_blank">WhatsApp Web</a>
+
+    <!-- LinkedIn -->
+    <a href="https://linkedin.com/in/HAMZABASHARAT" target="_blank">LinkedIn</a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/HAMZABASHARAT517" target="_blank">GitHub</a>
+
+    <!-- Portfolio -->
+    <a href="https://hamzabasharat.dev" target="_blank">Portfolio</a>
+
+    <!-- Kaggle -->
+    <a href="https://www.kaggle.com/hamza" target="_blank">Kaggle</a>
+
+    <!-- Medium / Blog -->
+    <a href="https://medium.com/@hamza" target="_blank">Blog</a>
+
+    <!-- Twitter / X -->
+    <a href="https://twitter.com/hamza" target="_blank">Twitter</a>
+  </div>
 </main>
+
 <footer>
   <div>Hamza Basharat / © 2025</div>
 </footer>
 </body>
 </html>
+
