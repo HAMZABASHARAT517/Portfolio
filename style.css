@@ -1,15 +1,24 @@
 :root{
   --max-width:1000px;
-  --accent:#0b74de;
-  --muted:#666;
+  --accent:#1e40af;   /* professional hover blue */
+  --muted:#9ca3af;    /* clean grey */
 }
 
 /* Reset & Body */
 *{box-sizing:border-box; margin:0; padding:0;}
-body{font-family:Segoe UI, system-ui, Arial, sans-serif; color:#fff; background:#000; overflow-x:hidden;}
+body{
+  font-family:Segoe UI, system-ui, Arial, sans-serif;
+  color:#e5e7eb;              /* soft white text */
+  background:#0f172a;         /* dark navy background */
+  overflow-x:hidden;
+}
 
 /* Container */
-.container{max-width:var(--max-width); margin:0 auto; padding:20px;}
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:20px;
+}
 
 /* Header */
 header{
@@ -21,14 +30,14 @@ header{
   justify-content:space-between;
   align-items:center;
   padding:20px 40px;
-  background:rgba(0,0,0,0.6);
+  background:rgba(15,23,42,0.85);   /* professional transparent */
   z-index:1000;
 }
 
 .logo{
   font-size:1.25rem;
   font-weight:700;
-  color:#00bcd4;
+  color:#2563eb;   /* primary professional blue */
 }
 
 /* Top navigation */
@@ -48,11 +57,11 @@ header{
 .username-badge{
   display:inline-block;
   padding:6px 20px;
-  border:1px solid #00bcd4;
+  border:1px solid #2563eb;
   border-radius:28px;
   font-size:1.1em;
   font-weight:300;
-  color:#00bcd4;
+  color:#2563eb;
   margin-bottom:25px;
 }
 
@@ -65,7 +74,7 @@ header{
 }
 
 .rotating-text{
-  color:#00bcd4;
+  color:#2563eb;
   display:inline-block;
   min-width:100px;
   animation:fadeIn 0.6s ease-in-out;
@@ -112,15 +121,15 @@ footer{
   justify-content:space-between;
   align-items:center;
   padding:10px 40px;
-  background:rgba(0,0,0,0.6);
-  color:white;
+  background:rgba(15,23,42,0.85);
+  color:#e5e7eb;
   font-size:0.9rem;
   z-index:1000;
 }
 
 footer a{
   margin-left:15px;
-  color:#00bcd4;
+  color:#2563eb;
   text-decoration:none;
   font-weight:500;
 }
