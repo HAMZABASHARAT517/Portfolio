@@ -5,6 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hamza Basharat - Portfolio</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* Additional @Resume button styling */
+.username-badge {
+  display:inline-block;
+  padding:8px 25px;
+  border:2px solid rgba(63,185,80,0.5);
+  border-radius:999px;
+  font-size:1.05em;
+  font-weight:500;
+  color:#f4f4f5;          /* Off-white text */
+  margin-bottom:25px;
+  text-decoration:none;
+  transition: all 0.3s ease;
+  cursor: pointer;        /* Cursor pointer */
+  background: rgba(63,185,80,0.05);  /* subtle light green bg */
+}
+
+.username-badge:hover {
+  color:#f4f4f5;                /* text stays off-white */
+  background: rgba(63,185,80,0.2); /* subtle green glow */
+  box-shadow: 0 4px 15px rgba(63,185,80,0.3); /* soft glowing shadow */
+  transform: translateY(-2px);  /* slight lift on hover */
+}
+</style>
 </head>
 <body>
 <header>
@@ -21,9 +45,10 @@
 
 <main>
   <section id="about">
-    <div class="username-badge">@Resume</div>
+    <!-- Resume download button -->
+    <a href="resume.pdf" download class="username-badge">@Resume</a>
     
-    <!-- Updated main heading -->
+    <!-- Main heading -->
     <h1 class="main-heading">HAMZA BASHARAT</h1>
     
     <!-- Rotating text -->
